@@ -38,9 +38,9 @@ topic = "thing/RaspberryPi1"
 #                    "cert":binascii.unhexlify(caCer),
 #                    "key":binascii.unhexlify(prKey),
 #                    "server_side":False
-client = MQTTClient("PYCOMGPY3",
-                    "ak3667i1mngzl-ats.iot.us-east-2.amazonaws.com",
-                    port=8883,
+client = MQTTClient(clientID,
+                    AWS_URL,
+                    port=AWS_Port,
                     keepalive=10000,
                     ssl=True,
                     ssl_params={
@@ -51,8 +51,6 @@ client = MQTTClient("PYCOMGPY3",
                     })
 time.sleep(2)
 client.set_callback(sub_cb)
-
-#client.subscribe(topic=topic)
 client.connect()
 client.subscribe(topic=topic)
 while True:
