@@ -6,9 +6,9 @@ For now this code is tested using external certificates rather than certificate 
 
 ## How to Guide
 Download the repository with commad:
-
-> git clone https://github.com/Ardutec/connectAWS_Gpy
-
+```
+git clone https://github.com/Ardutec/connectAWS_Gpy
+```
 Extract "connectAWS_Gpy" folder and save at "Atom" installed directory. In most cases that would be at "C:\Users\user_name\.atom\"
 
 Extract your certificates and save them in cert folder. Name device certificate as "certificate.pem.crt" and private key as "private.pem.key"
