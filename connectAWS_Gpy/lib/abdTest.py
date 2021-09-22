@@ -1,5 +1,5 @@
 import machine
-#import binascii
+import binascii
 from network import LTE
 cerAddress = 28417
 chunLen = 255
@@ -36,6 +36,21 @@ def readCer(address):
         p1 >>= 8
         #print(p1)
         #print(pNot)
-    return tempBuff
+    # print(type(tempBuff))
+    # return tempBuff
+    if(address == cerAddress):
+        AWS_CLIENT_CERT1 = "-----BEGIN CERTIFICATE-----\n"
+        AWS_CLIENT_CERT1 += binascii.unhexlify(tempBuff).decode('utf-8')
+        AWS_CLIENT_CERT1 += "\n-----END CERTIFICATE-----"
+        file = open('/flash/cert/certificateMS.pem.crt', "w")
+        file.write(AWS_CLIENT_CERT1)
+        file.close()
+    elif(address == prKeyAddress):
+        AWS_PRIVATE_KEY1 = "-----BEGIN RSA PRIVATE KEY-----\n"
+        AWS_PRIVATE_KEY1 += binascii.unhexlify(tempBuff).decode('utf-8')
+        AWS_PRIVATE_KEY1 += "\n-----END RSA PRIVATE KEY-----"
+        file1 = open("/flash/cert/privateMS.pem.key", "w")
+        file1.write(AWS_PRIVATE_KEY1)
+        file1.close()
 #caCer = readCer(cerAddress)
 #print(binascii.unhexlify(caCer))
