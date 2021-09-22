@@ -1,6 +1,8 @@
 import machine
 import binascii
 from network import LTE
+prKeyAddress = 28418
+pbKeyAddress = 28419
 cerAddress = 28417
 chunLen = 255
 lte = LTE()
